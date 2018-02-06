@@ -1,0 +1,13 @@
+﻿{
+  "Logging": {
+    "IncludeScopes": false,
+    "LogLevel": {
+      "Default": "Warning"
+    }
+  },
+  "ConnectionStrings": {
+    "DefaultConnection": "Host=185.86.4.73;Database=TRF;Username=postgres;Password=1Qaaal123",
+    "RedisServer": "185.86.4.73,abortConnect=false",
+    "RedisInstanceName": "testInstance"
+  }
+}

@@ -1,0 +1,56 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model Core2WebUI.ViewModels.LoginViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<div class="login-box">
+    <div class="login-logo">
+        <a href="../../index2.html"><b>MİYA</b> @Localizer["Sales Management"]</a>
+    </div><!-- /.login-logo -->
+    <div class="login-box-body">
+        <p class="login-box-msg">@Localizer["Sign in to start your session"]</p>
+        <form asp- asp-action="Login" asp-controller="Acc" method="post">
+            <div class="form-group has-feedback">
+                <input asp-for="Email" class="form-control" placeholder="@Localizer["Email"]" />
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                <span asp-validation-for="Email"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input asp-for="Password" class="form-control" placeholder="@Localizer["Password"]" />
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                <span asp-validation-for="Password" ></span>
+            </div>
+            <div asp-validation-summary="All" class="form-group has-feedback">
+
+                <!--<span  class="glyphicon glyphicon-alert form-control-feedback"></span>-->
+            </div>
+            <div class="row">
+                <div class="col-xs-8">
+                    <div class="checkbox icheck">
+                        <label>
+                            <input type="checkbox"> @Localizer["Remember Me"]
+                        </label>
+                    </div>
+                </div><!-- /.col -->
+                <div class="col-xs-4">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">@Localizer["Sign In"]</button>
+                </div><!-- /.col -->
+            </div>
+        </form>
+
+        <div class="social-auth-links text-center">
+            <p>@Localizer["- OR -"]</p>
+            <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> @Localizer["Sign in using Facebook"] </a>
+            <a href="#" class="btn btn-block btn-social btn-google-plus btn-flat"><i class="fa fa-google-plus"></i> @Localizer["Sign in using Google+"] </a>
+        </div><!-- /.social-auth-links -->
+
+        <a href="#">@Localizer["I forgot my password"]</a><br>
+        <a asp-action="Acc" asp-controller="Register"  class="text-center">@Localizer["Register a new membership"]</a>
+
+    </div><!-- /.login-box-body -->
+</div><!-- /.login-box -->

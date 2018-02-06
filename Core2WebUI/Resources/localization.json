@@ -1,0 +1,436 @@
+﻿[
+  {
+    "Key": "Hello",
+    "LocalizedValue": {
+      "fr-FR": "Bonjour",
+      "en-US": "Hello",
+      "es-MX": "test espanol",
+      "tr-TR": "Merhaba"
+    }
+  },
+  {
+    "Key": "Dashboard",
+    "LocalizedValue": {
+      "fr-FR": "Bonjour Dashboard",
+      "en-US": "Dashboard",
+      "es-MX": "Tablero",
+      "tr-TR": "Dashboard"
+    }
+  },
+  {
+    "Key": "Control Panel",
+    "LocalizedValue": {
+      "fr-FR": "Bonjour Control Panel",
+      "en-US": "Control Panel",
+      "es-MX": "Panel de control",
+      "tr-TR": "Kontrol Paneli"
+    }
+  },
+  {
+    "Key": "Login Page",
+    "LocalizedValue": {
+      "fr-FR": "Bonjour Login PAge",
+      "en-US": "Login Page",
+      "es-MX": "Página de inicio de sesión",
+      "tr-TR": "Giriş Yap"
+    }
+  },
+  {
+    "Key": "Registration Page",
+    "LocalizedValue": {
+      "fr-FR": "Bonjour Login Page",
+      "en-US": "Registration Page",
+      "es-MX": "Página de registro",
+      "tr-TR": "Kaydol"
+    }
+  },
+  {
+    "Key": "Sales Management",
+    "LocalizedValue": {
+      "fr-FR": "Bonjour sales Manager",
+      "en-US": "Sales Management",
+      "es-MX": "Gestión",
+      "tr-TR": "Satış Programı",
+    }
+  },
+  {
+    "Key": "See All Messages",
+    "LocalizedValue": {
+      "fr-FR": "Bonjour See All Messages",
+      "en-US": "See All Messages",
+      "es-MX": "Ver todos los mensajes",
+      "tr-TR": "Tüm mesajları gör"
+    }
+  },
+  {
+    "Key": "MİYA sales management program support team",
+    "LocalizedValue": {
+      "fr-FR": "Bonjour MİYA sales management program support team",
+      "en-US": "MİYA sales management program support team",
+      "es-MX": "MİYA equipo de soporte del programa de gestión de ventas",
+      "tr-TR": "MİYA satış programı destek ekibi"
+    }
+  },
+  {
+    "Key": "New Orders",
+    "LocalizedValue": {
+      "fr-FR": "Bonjour New Orders",
+      "en-US": "New Orders",
+      "es-MX": "Nuevos pedidos",
+      "tr-TR": "Yeni Siparişler"
+    }
+  },
+  {
+    "Key": "Bounce Rate",
+    "LocalizedValue": {
+      "fr-FR": "Bonjour Bounce Rate",
+      "en-US": "Bounce Rate",
+      "es-MX": "Porcentaje de rebote",
+      "tr-TR": "Geri Dönüşler"
+    }
+  },
+  {
+    "Key": "User Registrations",
+    "LocalizedValue": {
+      "fr-FR": "Bonjour User Registrations",
+      "en-US": "User Registrations",
+      "es-MX": "Registros de usuario",
+      "tr-TR": "Kullanıcı Kayıtları"
+    }
+  },
+  {
+    "Key": "Completed Sales",
+    "LocalizedValue": {
+      "fr-FR": "Bonjour Completed Sales",
+      "en-US": "Completed Sales",
+      "es-MX": "Ventas completadas",
+      "tr-TR": "Tamamlanan Satışlar"
+    }
+  },
+  {
+    "Key": "Logout",
+    "LocalizedValue": {
+      "fr-FR": "Bonjour Logout",
+      "en-US": "Logout",
+      "es-MX": "Cerrar sesión",
+      "tr-TR": "Çıkış"
+    }
+  },
+  {
+    "Key": "Donut",
+    "LocalizedValue": {
+      "fr-FR": "Bonjour Donut",
+      "en-US": "Donut",
+      "es-MX": "Rosquilla",
+      "tr-TR": "Pasta grafik"
+    }
+  },
+  {
+    "Key": "Area",
+    "LocalizedValue": {
+      "fr-FR": "Bonjour Area",
+      "en-US": "Area",
+      "es-MX": "Zona",
+      "tr-TR": "Alan"
+    }
+  },
+  {
+    "Key": "Chat",
+    "LocalizedValue": {
+      "fr-FR": "Bonjour Chat",
+      "en-US": "Chat",
+      "es-MX": "Charla",
+      "tr-TR": "Mesajlaşma"
+    }
+  },
+  {
+    "Key": "{0} minutes",
+    "LocalizedValue": {
+      "fr-FR": "Bonjour {0} minutes",
+      "en-US": "{0} minutes",
+      "es-MX": "{0} minutos",
+      "tr-TR": "{0} dakika"
+    }
+  },
+  {
+    "Key": "{0} hours",
+    "LocalizedValue": {
+      "fr-FR": "Bonjour {0} hours",
+      "en-US": "{0} hours",
+      "es-MX": "{0} horas",
+      "tr-TR": "{0} saat"
+    }
+  },
+  {
+    "Key": "{0} days",
+    "LocalizedValue": {
+      "fr-FR": "Bonjour {0} days",
+      "en-US": "{0} days",
+      "es-MX": "{0} dias",
+      "tr-TR": "{0} gün"
+    }
+  },
+  {
+    "Key": "Add item",
+    "LocalizedValue": {
+      "fr-FR": "Bonjour Add item",
+      "en-US": "Add item",
+      "es-MX": "Añadir artículo",
+      "tr-TR": "Ekle"
+    }
+  },
+  {
+    "Key": "{0} months",
+    "LocalizedValue": {
+      "fr-FR": "Bonjour {0} months",
+      "en-US": "{0} months",
+      "es-MX": "{0} meses",
+      "tr-TR": "{0} ay"
+    }
+  },
+  {
+    "Key": "To Do List",
+    "LocalizedValue": {
+      "fr-FR": "Bonjour To Do List",
+      "en-US": "To Do List",
+      "es-MX": "Lista de quehaceres",
+      "tr-TR": "Yapılacaklar"
+    }
+  },
+  {
+    "Key": "Status",
+    "LocalizedValue": {
+      "fr-FR": "Bonjour Status",
+      "en-US": "Status",
+      "es-MX": "Estado",
+      "tr-TR": "Durum"
+    }
+  },
+  {
+    "Key": "Type message",
+    "LocalizedValue": {
+      "fr-FR": "Bonjour Type message",
+      "en-US": "Type message",
+      "es-MX": "Escriba mensaje",
+      "tr-TR": "Mesaj yaz"
+    }
+  },
+  {
+    "Key": "Open",
+    "LocalizedValue": {
+      "fr-FR": "Bonjour open",
+      "en-US": "Open",
+      "es-MX": "Abierto",
+      "tr-TR": "Aç"
+    }
+  },
+  {
+    "Key": "Profile",
+    "LocalizedValue": {
+      "fr-FR": "Bonjour Profile",
+      "en-US": "Profile",
+      "es-MX": "Perfil",
+      "tr-TR": "Profilim"
+    }
+  },
+  {
+    "Key": "Departman",
+    "LocalizedValue": {
+      "fr-FR": "Bonjour Departman",
+      "en-US": "Departman",
+      "es-MX": "Departamental",
+      "tr-TR": "Departman"
+    }
+  },
+  {
+    "Key": "{0} messages",
+    "LocalizedValue": {
+      "fr-FR": "{0} messages bonjour",
+      "en-US": "{0} messages",
+      "es-MX": "{0} mensajes",
+      "tr-TR": "{0} mesaj"
+    }
+  },
+  {
+    "Key": "{0} notifications",
+    "LocalizedValue": {
+      "fr-FR": "{0} messages notifications",
+      "en-US": "{0} notifications",
+      "es-MX": "{0} notificaciones",
+      "tr-TR": "{0} hatırlatma"
+    }
+  },
+  {
+    "Key": "{0} tasks",
+    "LocalizedValue": {
+      "fr-FR": "{0} bonjour tasks",
+      "en-US": "{0} tasks",
+      "es-MX": "{0} tarea",
+      "tr-TR": "{0} görev"
+    }
+  },
+  {
+    "Key": "View all",
+    "LocalizedValue": {
+      "fr-FR": "Bonjour View all",
+      "en-US": "View all",
+      "es-MX": "Ver todo",
+      "tr-TR": "Tamamını gör"
+    }
+  },
+  {
+    "Key": "Last login time",
+    "LocalizedValue": {
+      "fr-FR": "Bonjour Last login time",
+      "en-US": "Last login time",
+      "es-MX": "Último inicio de sesión Hora",
+      "tr-TR": "Sisteme son giriş tarihi"
+    }
+  },
+  {
+    "Key": "Followed issues",
+    "LocalizedValue": {
+      "fr-FR": "Bonjour Followed issues",
+      "en-US": "Followed issues",
+      "es-MX": "Problemas seguidos",
+      "tr-TR": "Takipteki işler"
+    }
+  },
+  {
+    "Key": "More Info",
+    "LocalizedValue": {
+      "fr-FR": "Bonjour More Info",
+      "en-US": "More Info",
+      "es-MX": "Más información",
+      "tr-TR": "Detaylı Bilgi"
+    }
+  },
+  {
+    "Key": "Sign in to start your session",
+    "LocalizedValue": {
+      "fr-FR": "Bonjour sign in",
+      "en-US": "Sign in to start your session",
+      "es-MX": "Registrarse",
+      "tr-TR": "Sisteme giriş yapın"
+    }
+  },
+  {
+    "Key": "Subject",
+    "LocalizedValue": {
+      "fr-FR": "Bonjour Subject",
+      "en-US": "Subject",
+      "es-MX": "Tema",
+      "tr-TR": "Konu"
+    }
+  },
+  {
+    "Key": "Send",
+    "LocalizedValue": {
+      "fr-FR": "Bonjour Send",
+      "en-US": "Send",
+      "es-MX": "Enviar",
+      "tr-TR": "Gönder"
+    }
+  },
+  {
+    "Key": "Email",
+    "LocalizedValue": {
+      "fr-FR": "Bonjour email",
+      "en-US": "Email",
+      "es-MX": "Correo electrónico",
+      "tr-TR": "Eposta"
+    }
+  },
+  {
+    "Key": "Password",
+    "LocalizedValue": {
+      "fr-FR": "Bonjour password",
+      "en-US": "Password",
+      "es-MX": "Contraseña",
+      "tr-TR": "Şifre"
+    }
+  },
+  {
+    "Key": "Remember Me",
+    "LocalizedValue": {
+      "fr-FR": "Bonjour remember me",
+      "en-US": "Remember Me",
+      "es-MX": "Recuérdame",
+      "tr-TR": "Beni Hatırla"
+    }
+  },
+  {
+    "Key": "Sign In",
+    "LocalizedValue": {
+      "fr-FR": "Bonjour sign in",
+      "en-US": "Sign In",
+      "es-MX": "Registrarse",
+      "tr-TR": "Giriş Yap"
+    }
+  },
+  {
+    "Key": "Register a new membership",
+    "LocalizedValue": {
+      "fr-FR": "Bonjour register",
+      "en-US": "Register a new membership",
+      "es-MX": "Registro",
+      "tr-TR": "Kayıt Ol"
+    }
+  },
+  {
+    "Key": "Sign in using Facebook",
+    "LocalizedValue": {
+      "fr-FR": "Bonjour sign in facebook",
+      "en-US": "Sign in using Facebook",
+      "es-MX": "Inicie sesión con Facebook",
+      "tr-TR": "Facebook hesabı ile kayıt ol"
+    }
+  },
+  {
+    "Key": "Sign in using Google+",
+    "LocalizedValue": {
+      "fr-FR": "Bonjour sign in google",
+      "en-US": "Sign in using Google+",
+      "es-MX": "Inicia sesión con Google+",
+      "tr-TR": "Google+ hesabı ile kayıt ol"
+    }
+  },
+  {
+    "Key": "I forgot my password",
+    "LocalizedValue": {
+      "fr-FR": "Bonjour forgot password",
+      "en-US": "I forgot my password",
+      "es-MX": "Se te olvidó tu contraseña",
+      "tr-TR": "Şifremi unuttum"
+    }
+  },
+  {
+    "Key": "- OR -",
+    "LocalizedValue": {
+      "fr-FR": "Bonjour -OR-",
+      "en-US": "- OR -",
+      "es-MX": "-O-",
+      "tr-TR": "Veya"
+    }
+  },
+  {
+    "Key": "BoxLengthRequired",
+    "LocalizedValue": {
+      "fr-FR": "Bonjour email filed is required",
+      "en-US": "Email field is required",
+      "es-MX": "El campo Correo electrónico es obligatorio",
+      "tr-TR": "Eposta alanı doldurulması zorunludur"
+    }
+  },
+  {
+    "Key": "Miya Sales Program Dashboard",
+    "LocalizedValue": {
+      "fr-FR": "Bonjour Miya/Man Sales Program",
+      "en-US": "Miya/Man Sales Program Dashboard",
+      "es-MX": "Miya/Man Programa de ventas",
+      "tr-TR": "Miya/ Man Satış Ana Sayfa"
+    }
+  }
+
+
+]

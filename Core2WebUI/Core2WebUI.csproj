@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Askmethat.Aspnet.JsonLocalizer" Version="1.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.3" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.1" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="2.0.1" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.Design" Version="1.1.1" />
+    <PackageReference Include="Wangkanai.Detection.Device" Version="2.0.0-beta5-fix" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Core2WebUI.Core\Core2WebUI.Core.csproj" />
+    <ProjectReference Include="..\Core2WebUI.Entities\Core2WebUI.Entities.csproj" />  
+  </ItemGroup>
+
+</Project>
