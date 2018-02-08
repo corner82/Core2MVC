@@ -29,13 +29,25 @@ namespace Core2WebUI.Core.HttpRequest.Concrete
             return await builder.SendAsync();
         }
 
+        public static async Task<HttpResponseMessage> Get(string requestUri, Dictionary<string, string> headers, object value)
+        {
+            var builder = new HttpClientRequestBuilder()
+                                .AddMethod(HttpMethod.Get)
+                                .AddRequestUri(requestUri)
+                                .AddContent(new JsonContent(value))
+                                .AddHeaders(headers);
+                                //.AddTokenCreator(tokenCreator);
+
+            return await builder.SendAsync();
+        }
+
         public static async Task<HttpResponseMessage> Get(string requestUri, Dictionary<string, string> headers)
         {
             var builder = new HttpClientRequestBuilder()
                                 .AddMethod(HttpMethod.Get)
                                 .AddRequestUri(requestUri)
                                 .AddHeaders(headers);
-                                //.AddTokenCreator(tokenCreator);
+            //.AddTokenCreator(tokenCreator);
 
             return await builder.SendAsync();
         }

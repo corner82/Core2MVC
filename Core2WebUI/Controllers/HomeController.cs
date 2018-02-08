@@ -32,7 +32,9 @@ namespace Core2WebUI.Controllers
             //_hmacManager = hmacManager;
         }
 
+        [SessionTimeOut]
         [ServiceFilter(typeof(TestDIAttribute))]
+        [ServiceFilter(typeof(HmacTokenGeneratorAttribute))]
         public async  Task<string> Index()
         {
             var user = HttpContext.Session.Get<SessionUserModel>("CurrentUser");
@@ -44,6 +46,7 @@ namespace Core2WebUI.Controllers
             //TimeSpan.FromMinutes(2).Ticks;
             var ticks = DateTime.Now.Ticks;
             var headers = new Dictionary<string, string>();
+            var tokenGenerated = HttpContext.Session.GetHmacToken();
             if (user != null)
             {
                 var token = HmacServiceManager.GenerateToken(user.Email,user.Password
@@ -52,16 +55,15 @@ namespace Core2WebUI.Controllers
                                                             , ticks);
                 
                 headers.Add("X-hash", "hashvalue");
-                headers.Add("X-Hmac", token);
+                headers.Add("X-Hmac", HttpContext.Session.GetHmacToken());
                 headers.Add("X-PublicKey", user.ConcurrencyStamp);
                 //_hmacManager.test();
-                var response = await HttpClientRequestFactory.Get("http://localhost:58443/api/values/23", headers);
-                var data = response.Content.ReadAsStringAsync().Result;
-                return data.ToString();
+                //var response = await HttpClientRequestFactory.Get("http://localhost:58443/api/values/23", headers);
+                //var data = response.Content.ReadAsStringAsync().Result;
+                //return data.ToString();
             }
              return "test";
             //return response.StatusCode.ToString();
-            return "deneme test";
 
         }
     }

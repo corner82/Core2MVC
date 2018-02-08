@@ -19,6 +19,7 @@ using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Options;
 using Core2WebUI.Core.Culture;
 using Core2WebUI.Core.Utills;
+using Core2WebUI.Core.Hmac;
 
 namespace Core3WebUI
 {
@@ -41,6 +42,7 @@ namespace Core3WebUI
         {
             services.AddScoped<AjaxSessionTimeOutAttribute>();
             services.AddScoped<TestDIAttribute>();
+            services.AddScoped<HmacTokenGeneratorAttribute>();
             /*services.Configure<RequestLocalizationOptions>(options =>
            {
                CultureInfo[] supportedCultures = new[]
@@ -137,6 +139,7 @@ namespace Core3WebUI
             //services.AddScoped<ISessionService, SessionService>();
             //services.AddSingleton<HmacServiceManagerBase, HmacServiceManager>();
             services.AddTransient<RemoteAddressFinder, RemoteAddressFinder>();
+            services.AddTransient<HmacServiceManagerBase, HmacServiceManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
