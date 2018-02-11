@@ -20,6 +20,7 @@ using Microsoft.Extensions.Options;
 using Core2WebUI.Core.Culture;
 using Core2WebUI.Core.Utills;
 using Core2WebUI.Core.Hmac;
+using Core2WebUI.Core.RabbitMQ;
 
 namespace Core3WebUI
 {
@@ -40,9 +41,7 @@ namespace Core3WebUI
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<AjaxSessionTimeOutAttribute>();
-            services.AddScoped<TestDIAttribute>();
-            services.AddScoped<HmacTokenGeneratorAttribute>();
+            
             /*services.Configure<RequestLocalizationOptions>(options =>
            {
                CultureInfo[] supportedCultures = new[]
@@ -136,10 +135,16 @@ namespace Core3WebUI
                 .AddViewLocalization()
                 .AddDataAnnotationsLocalization();
 
+            services.AddScoped<AjaxSessionTimeOutAttribute>();
+            services.AddScoped<TestDIAttribute>();
+            services.AddScoped<HmacTokenGeneratorAttribute>();
+            services.AddScoped<PageEntryLogRabbitMQAttribute>();
+
             //services.AddScoped<ISessionService, SessionService>();
             //services.AddSingleton<HmacServiceManagerBase, HmacServiceManager>();
             services.AddTransient<RemoteAddressFinder, RemoteAddressFinder>();
             services.AddTransient<HmacServiceManagerBase, HmacServiceManager>();
+            services.AddTransient<PageEntryLogPublisher, PageEntryLogPublisher>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

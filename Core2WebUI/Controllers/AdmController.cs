@@ -37,6 +37,7 @@ namespace Core2WebUI.Controllers
                 var valueToDisplay2 = Encoding.UTF8.GetString(valueFromRedis2);
             }*/
             var user = HttpContext.Session.Get<SessionUserModel>("CurrentUser");
+            var ff = JsonConvert.SerializeObject(user);
             _distributedCache.SetString("userTestObj",JsonConvert.SerializeObject(user));
             SessionUserModel model = JsonConvert.DeserializeObject<SessionUserModel>(_distributedCache.GetString("userTestObj"));
             var userName = model.Email;

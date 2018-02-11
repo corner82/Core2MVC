@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 using Core2WebUI.Entities.Identity;
 using Core2WebUI.Entities.Session;
@@ -12,6 +13,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Distributed;
 using Newtonsoft.Json;
+using Wangkanai.Detection;
 
 namespace Core2WebUI.Controllers
 {
@@ -21,15 +23,17 @@ namespace Core2WebUI.Controllers
         private readonly SignInManager<CustomIdentityUser> _signinManager;
         private readonly RoleManager<CustomIdentityRole> _roleManager;
         private readonly IDistributedCache _distributedCache;
-
+        private readonly IDeviceResolver _deviceResolver;
         public AccController(UserManager<CustomIdentityUser> userManager,
                                 SignInManager<CustomIdentityUser> signinManager,
                                 RoleManager<CustomIdentityRole> roleManager,
-                                IDistributedCache distributedCache)
+                                IDistributedCache distributedCache,
+                                IDeviceResolver deviceResolver)
         {
             _userManager = userManager;
             _signinManager = signinManager;
             _distributedCache = distributedCache;
+            _deviceResolver = deviceResolver;
         }
 
         [HttpGet]
@@ -85,10 +89,14 @@ namespace Core2WebUI.Controllers
                         UserName = user.UserName,
                         Roles = roleList,
                         UserClaims = sessionUserClaimList,
-                        Password = user.PasswordHash
+                        Password = user.PasswordHash,
+                        //UserAgent = Convert.ToBase64String(Encoding.UTF8.GetBytes( _deviceResolver.UserAgent.ToString()))
+                        UserAgent = _deviceResolver.UserAgent.ToString()
                     };
                     HttpContext.Session.Set("CurrentUser", sessionUser);
-                    await _distributedCache.SetStringAsync(user.ConcurrencyStamp, JsonConvert.SerializeObject(user));
+                    var ff = JsonConvert.SerializeObject(user);
+                    await _distributedCache.SetStringAsync(user.ConcurrencyStamp, JsonConvert.SerializeObject(sessionUser));
+                    var userTest = JsonConvert.DeserializeObject<SessionUserModel>(await _distributedCache.GetStringAsync(user.ConcurrencyStamp));
 
                 }
                 catch(Exception ex)

@@ -24,12 +24,7 @@ namespace Core2WebUI.Core.Hmac
             }
         }
 
-        public void test()
-        {
-
-        }
-
-        public static string GenerateToken(string username, string password, string ip, string userAgent, long ticks)
+        public static string GenerateToken(string username, string privateKey, string ip, string userAgent, long ticks)
         {
             string hash = string.Join(":", new string[] { username, ip, userAgent, ticks.ToString() });
             string hashLeft = "";
@@ -37,7 +32,7 @@ namespace Core2WebUI.Core.Hmac
             //using (HMAC hmac = HMACSHA256.Create(_alg)) deprecated
             using (HMACSHA256 hmac = new HMACSHA256())
             {
-                hmac.Key = Encoding.UTF8.GetBytes(GetHashedPassword(password));
+                hmac.Key = Encoding.UTF8.GetBytes(GetHashedPrivateKey(privateKey));
                 byte[] hashLeftByte = hmac.ComputeHash(Encoding.UTF8.GetBytes(hash));
                 hashLeft = Convert.ToBase64String(hashLeftByte);
                 hashRight = string.Join(":", new string[] { username, ticks.ToString() });
@@ -45,21 +40,25 @@ namespace Core2WebUI.Core.Hmac
             return Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Join(":", hashLeft, hashRight)));
         }
 
-        public static string GetHashedPassword(string password)
+        public static string GetHashedPrivateKey(string privateKey)
         {
-            string key = string.Join(":", new string[] { password, _salt });
+            string key = string.Join(":", new string[] { privateKey, _salt });
             //using (HMAC hmac = HMACSHA256.Create(_alg)) deprecated
             using (HMACSHA256 hmac = new HMACSHA256())
             {
                 // Hash the key.
                 hmac.Key = Encoding.UTF8.GetBytes(_salt);
                 //hmac.ComputeHash(Encoding.UTF8.GetBytes(key));
-                byte[] hashPasswordSalt = hmac.ComputeHash(Encoding.UTF8.GetBytes(key));
-                return Convert.ToBase64String(hashPasswordSalt);
+                byte[] hashPrivateKeySalt = hmac.ComputeHash(Encoding.UTF8.GetBytes(key));
+                return Convert.ToBase64String(hashPrivateKeySalt);
             }
         }
 
-        public static bool IsTokenValid(string token, string ip, string userAgent)
+        public static bool IsTokenValid(string userName,
+                                        string privateKey,
+                                        string token,
+                                        string ip,
+                                        string userAgent)
         {
             bool result = false;
             try
@@ -75,21 +74,18 @@ namespace Core2WebUI.Core.Hmac
                     string username = parts[1];
                     long ticks = long.Parse(parts[2]);
                     DateTime timeStamp = new DateTime(ticks);
+                    var local = DateTime.UtcNow.ToLocalTime();
+                    var testtime = Math.Abs((DateTime.UtcNow.ToLocalTime() - timeStamp).TotalMinutes);
+                    var testtime2 = Math.Abs((DateTime.Now - timeStamp).TotalMinutes);
+                    var testtime3 = DateTime.Now;
                     // Ensure the timestamp is valid.
-                    bool expired = Math.Abs((DateTime.UtcNow - timeStamp).TotalMinutes) > _expirationMinutes;
+                    bool expired = Math.Abs((DateTime.UtcNow.ToLocalTime() - timeStamp).TotalMinutes) > _expirationMinutes;
                     if (!expired)
                     {
-                        //
-                        // Lookup the user's account from the db.
-                        //
-                        if (username == "john")
-                        {
-                            string password = "password";
-                            // Hash the message with the key to generate a token.
-                            string computedToken = GenerateToken(username, password, ip, userAgent, ticks);
-                            // Compare the computed token with the one supplied and ensure they match.
-                            result = (token == computedToken);
-                        }
+                        // Hash the message with the key to generate a token.
+                        string computedToken = GenerateToken(userName, privateKey, ip, userAgent, ticks);
+                        // Compare the computed token with the one supplied and ensure they match.
+                        result = (token == computedToken);
                     }
                 }
             }
