@@ -21,6 +21,7 @@ using Core2WebUI.Core.Culture;
 using Core2WebUI.Core.Utills;
 using Core2WebUI.Core.Hmac;
 using Core2WebUI.Core.RabbitMQ;
+using Core2WebUI.Entities.Log;
 
 namespace Core3WebUI
 {
@@ -103,6 +104,7 @@ namespace Core3WebUI
                   options.Configuration = Configuration.GetConnectionString("RedisServer");
               }
             );
+            
             // session ayarları
             services.AddSession(options =>
             {
@@ -136,7 +138,6 @@ namespace Core3WebUI
                 .AddDataAnnotationsLocalization();
 
             services.AddScoped<AjaxSessionTimeOutAttribute>();
-            services.AddScoped<TestDIAttribute>();
             services.AddScoped<HmacTokenGeneratorAttribute>();
             services.AddScoped<PageEntryLogRabbitMQAttribute>();
 
@@ -145,6 +146,9 @@ namespace Core3WebUI
             services.AddTransient<RemoteAddressFinder, RemoteAddressFinder>();
             services.AddTransient<HmacServiceManagerBase, HmacServiceManager>();
             services.AddTransient<PageEntryLogPublisher, PageEntryLogPublisher>();
+            services.AddSingleton<PageAccessLogModel, PageAccessLogModel>();
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

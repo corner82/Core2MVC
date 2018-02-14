@@ -77,10 +77,49 @@ namespace Core2WebUI.Extensions
             return "";
         }
 
+        public static string GetUserPrivateKey(this ISession session)
+        {
+            try
+            {
+                _sessionUserModel = _sessionUserModel ?? session.Get<SessionUserModel>("CurrentUser");
+
+                if (_sessionUserModel != null && !string.IsNullOrEmpty(_sessionUserModel.SecurityStamp))
+                {
+                    return _sessionUserModel.SecurityStamp;
+                }
+                return "";
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return "";
+        }
+
+        public static string GetUserPublicKey(this ISession session)
+        {
+            try
+            {
+                _sessionUserModel = _sessionUserModel ?? session.Get<SessionUserModel>("CurrentUser");
+
+                if (_sessionUserModel != null && !string.IsNullOrEmpty(_sessionUserModel.ConcurrencyStamp))
+                {
+                    return _sessionUserModel.ConcurrencyStamp;
+                }
+                return "";
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return "";
+        }
+
         public static void SetHmacToken(this ISession session, string hmacToken)
         {
             try
             {
+
                 _sessionUserModel = _sessionUserModel ?? session.Get<SessionUserModel>("CurrentUser");
                 _sessionUserModel.HmacToken = hmacToken;
                 var token = _sessionUserModel.HmacToken;

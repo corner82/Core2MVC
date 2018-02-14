@@ -9,5 +9,9 @@
     "DefaultConnection": "Host=185.86.4.73;Database=TRF;Username=postgres;Password=1Qaaal123",
     "RedisServer": "127.0.0.1,abortConnect=false",
     "RedisInstanceName": "testInstance"
+  },
+  "RabbitMQLog": {
+    "HostName": "localhost",
+    "PageLogQueue": "hello"
   }
 }
