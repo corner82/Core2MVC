@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using Core2WebUI.Core.Exceptions.Custom;
 using Core2WebUI.Entities.Identity;
 using Core2WebUI.Entities.Session;
 using Core2WebUI.Extensions;
@@ -53,9 +55,14 @@ namespace Core2WebUI.Controllers
         {
             if (!ModelState.IsValid) return View(model);
 
-           
-            var result = _signinManager.PasswordSignInAsync(model.Email, 
-                                                            model.Password, false, false).Result;
+            Microsoft.AspNetCore.Identity.SignInResult result = new Microsoft.AspNetCore.Identity.SignInResult();
+            try {
+                result = _signinManager.PasswordSignInAsync(model.Email,
+                                                        model.Password, false, false).Result;
+            } catch(Exception ex) {
+                throw new IdentityManagerException(Convert.ToInt32(HttpStatusCode.BadGateway), ex);
+            }
+            
 
             if(result.Succeeded)
             {
@@ -101,7 +108,9 @@ namespace Core2WebUI.Controllers
                 }
                 catch(Exception ex)
                 {
-                    throw new Exception("unhandled exception", ex);
+                    //throw new Exception("unhandled exception", ex);
+                    //throw new HttpStatusCodeException(404, ex);
+                    throw new RedisManagerException(ex);
 
                 }
                 return Redirect("~/Adm/Dsh");

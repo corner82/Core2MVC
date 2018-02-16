@@ -1,0 +1,17 @@
+﻿{
+  "Logging": {
+    "IncludeScopes": false,
+    "LogLevel": {
+      "Default": "Warning"
+    }
+  },
+  "ConnectionStrings": {
+    "DefaultConnection": "Host=185.86.4.73;Database=TRF;Username=postgres;Password=1Qaaal123",
+    "RedisServer": "127.0.0.0,abortConnect=false",
+    "RedisInstanceName": "testInstance2"
+  },
+  "RabbitMQLog": {
+    "HostName": "localhost",
+    "PageLogQueue": "hello"
+  }
+}

@@ -22,27 +22,27 @@ using Core2WebUI.Core.Utills;
 using Core2WebUI.Core.Hmac;
 using Core2WebUI.Core.RabbitMQ;
 using Core2WebUI.Entities.Log;
+using Core2WebUI.Middlewares.Exceptions;
+using Core2WebUI.Middlewares;
+using System.IO;
+using System.Net;
+using Core2WebUI.Core.Exceptions.Custom;
 
 namespace Core3WebUI
 {
     public class Startup
     {
         public IConfiguration Configuration { get; }
-        public Startup(IConfiguration configuration, IHostingEnvironment env)
+        public Startup(IConfiguration configuration)
         {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("miyasettings.json", optional: false, reloadOnChange: true)
-                .AddJsonFile($"miyasettings.{env.EnvironmentName}.json", optional: true)
-                .AddEnvironmentVariables();
-            Configuration = builder.Build();
+            Configuration = configuration;
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            
+
             /*services.Configure<RequestLocalizationOptions>(options =>
            {
                CultureInfo[] supportedCultures = new[]
@@ -71,14 +71,30 @@ namespace Core3WebUI
            });*/
             //services.AddLocalization();
 
-            //Identity dccontext ayarları(postgreSQL için ayarlanıyor)
-            services.AddDbContext<CustomIdentityDbContext>(options =>
-                         options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"))
-            );
-            // Identity ayarları
-            services.AddIdentity<CustomIdentityUser, CustomIdentityRole>()
-                    .AddEntityFrameworkStores<CustomIdentityDbContext>()
-                    .AddDefaultTokenProviders();
+            try
+            {
+                //Identity dccontext ayarları(postgreSQL için ayarlanıyor)
+                services.AddDbContext<CustomIdentityDbContext>(options =>
+                             options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"))
+                );
+            }
+            catch(Exception ex)
+            {
+                throw new IdentityManagerException(Convert.ToInt32(HttpStatusCode.Unauthorized), ex);
+            }
+
+
+            try {
+                // Identity ayarları
+                services.AddIdentity<CustomIdentityUser, CustomIdentityRole>()
+                        .AddEntityFrameworkStores<CustomIdentityDbContext>()
+                        .AddDefaultTokenProviders();
+            }
+            catch (Exception ex)
+            {
+                throw new IdentityManagerException(Convert.ToInt32(HttpStatusCode.Unauthorized), ex);
+            }
+            
 
             //HTTP Cookie ayarları
             services.ConfigureApplicationCookie(options =>
@@ -97,13 +113,20 @@ namespace Core3WebUI
                 };*/
             });
 
-            // redis ayarları
-            services.AddDistributedRedisCache(options =>
-              {
-                  options.InstanceName = Configuration.GetConnectionString("RedisInstanceName");
-                  options.Configuration = Configuration.GetConnectionString("RedisServer");
-              }
-            );
+            try
+            {
+                // redis ayarları
+                services.AddDistributedRedisCache(options =>
+                {
+                    options.InstanceName = Configuration.GetConnectionString("RedisInstanceName");
+                    options.Configuration = Configuration.GetConnectionString("RedisServer");
+                }
+                );
+            } catch(Exception ex)
+            {
+                throw new IdentityManagerException(Convert.ToInt32(HttpStatusCode.Unauthorized), ex);
+            }
+            
             
             // session ayarları
             services.AddSession(options =>
@@ -158,14 +181,26 @@ namespace Core3WebUI
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseHttpStatusCodeExceptionMiddleware();
+                app.UseExceptionHandlingMiddleware();
+            } else
+            {
+                app.UseHttpStatusCodeExceptionMiddleware();
+                app.UseExceptionHandlingMiddleware();
             }
-
-            
 
             // session
             app.UseSession();
-            // Identity
-            app.UseAuthentication();
+
+            try {
+                // Identity
+                app.UseAuthentication();
+            } catch(Exception ex)
+            {
+                throw new IdentityManagerException(Convert.ToInt32(HttpStatusCode.Unauthorized), ex);
+            }
+
+
             // route globalizasyon cultureInfo ayarlar
             app.UseRouter(routes =>
             {

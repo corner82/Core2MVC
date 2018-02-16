@@ -35,7 +35,7 @@ namespace Core2WebUI.Filters
             var routeValues = context.ActionDescriptor.RouteValues;
 
 
-            _pageAccessLogModel.UserAgent = headers.Where(x => x.Key == "HeaderUserAgent").FirstOrDefault()..Value;
+            _pageAccessLogModel.UserAgent = headers.Where(x => x.Key == "HeaderUserAgent").FirstOrDefault().Value;
             _pageAccessLogModel.Host = _httpContext.Request.Host.Host;
             _pageAccessLogModel.Port = Convert.ToInt32(_httpContext.Request.Host.Port);
             _pageAccessLogModel.Controller = routeValues.Where(x => x.Key == "controller").FirstOrDefault().Value;
